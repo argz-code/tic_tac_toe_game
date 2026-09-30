@@ -18,7 +18,7 @@ A fully functional, two-player tic tac toe game implementation written in C++.
 
 ## Overview
 
-This project implements a classic tic tac toe game in C++ that allows two players to compete against each other. The game features a command-line interface and supports interactive gameplay with input validation.
+This project implements a classic tic tac toe game in C++ that allows two players to compete against each other. The game features a command-line interface and supports interactive gameplay with input validation and real-time board updates.
 
 ## Features
 
@@ -50,12 +50,12 @@ cd tic_tac_toe_game
 
 **Using g++:**
 ```bash
-g++ -o tic_tac_toe main.cpp
+g++ -o tic_tac_toe tictactoe.cpp
 ```
 
 **Using clang:**
 ```bash
-clang++ -o tic_tac_toe main.cpp
+clang++ -o tic_tac_toe tictactoe.cpp
 ```
 
 **Using Make (if available):**
@@ -72,21 +72,32 @@ Run the compiled executable:
 ```
 
 **Gameplay:**
-1. The game board is displayed as a 3x3 grid with positions numbered 1-9
-2. Players take turns entering their move (1-9) to place their mark (X or O)
-3. The first player to get three marks in a row (horizontal, vertical, or diagonal) wins
-4. If all squares are filled without a winner, the game is a draw
-5. Follow the on-screen prompts to play
+1. The game board is displayed as a 3x3 grid with row and column indices (0-2)
+2. Players take turns entering their move as row and column coordinates
+3. Enter two numbers (0-2) separated by a space: `row column`
+4. The first player to get three marks in a row (horizontal, vertical, or diagonal) wins
+5. If all squares are filled without a winner, the game is a draw
+6. Follow the on-screen prompts to play
 
 **Example Game Flow:**
 ```
- 1 | 2 | 3
------------
- 4 | 5 | 6
------------
- 7 | 8 | 9
+   |   |   
+___________
 
-Player X, enter your move (1-9): 5
+   |   |   
+___________
+
+   |   |   
+Player X, enter row(0-2) and col(0-2): 1 1
+
+   |   |   
+___________
+
+   | X |   
+___________
+
+   |   |   
+Player O, enter row(0-2) and col(0-2): 0 0
 ```
 
 ## Game Rules
@@ -95,13 +106,13 @@ Player X, enter your move (1-9): 5
 - Each player places one mark per turn on an empty square
 - A player wins by getting three marks in a row (horizontal, vertical, or diagonal)
 - The game ends in a draw if the board fills without a winner
-- Invalid moves (occupied squares or out-of-range numbers) are rejected
+- Invalid moves (occupied squares or out-of-range numbers) are rejected and do not count as a turn
 
 ## File Structure
 
 ```
 tic_tac_toe_game/
-├── main.cpp          # Main game implementation
+├── tictactoe.cpp     # Main game implementation
 ├── README.md         # This file
 └── .gitignore        # Git ignore file
 ```
